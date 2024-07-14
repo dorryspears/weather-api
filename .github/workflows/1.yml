@@ -1,0 +1,27 @@
+name: Run Jest Tests 1
+
+on:
+  push:
+    branches:
+      - 'main'
+
+jobs:
+    test:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v2
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v2
+              with:
+                node-version: '20'
+
+            - name: Install Dependencies
+              run: npm install
+
+            - name: Install Jest
+              run: npm install jest -g
+
+            - name: Run Jest Test 1
+              run: jest tests/1.test.js
